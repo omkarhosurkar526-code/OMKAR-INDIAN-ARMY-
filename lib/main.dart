@@ -1,0 +1,15 @@
+workflows:
+  android-workflow:
+    name: Android Build
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter pub get
+      - name: Build APK
+        script: |
+          flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/*.apk
+      
